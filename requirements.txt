@@ -1,0 +1,12 @@
+Flask
+redis
+
+# Testing
+httpie
+nose
+rednose
+pinocchio
+coverage
+codecov
+mockredispy
+mock

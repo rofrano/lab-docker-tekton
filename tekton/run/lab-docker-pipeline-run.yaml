@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  generateName: lab-docker-pr-
+spec:
+  pipelineRef:
+    name: build-and-deploy-pipeline
+  resources:
+    - name: git-source
+      resourceRef:
+        name: lab-docker-git
+  params:
+    - name: pathToYamlFile
+      value: "knative/lab-docker.yaml"
+    - name: imageUrl
+      value: us.icr.io/cloud_service_mgmt/lab-docker
+    - name: imageTag
+      value: "1.0"
+  trigger:
+    type: manual
+  serviceAccount: pipeline-account
